@@ -17,6 +17,12 @@ const CandidateSearch = () => {
     company: null,
   });
 
+  const [currentIdx, setCurrentIdx] = useState<number>(0);
+  const searchForSpecificUser = async (user: string) => {
+    const data: Candidate = await searchGithubUser(user);
+    setCurrentUser(data);
+  };
+
   return <h1>CandidateSearch</h1>;
 };
 
