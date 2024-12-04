@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { searchGithub, searchGithubUser } from '../api/API';
+import { searchGithub, searchGithubUser } from '../api/api';
 import { Candidate } from '../interfaces/Candidate.interface';
+import CandidateCard from '../components/Candidate';
 
 
 const CandidateSearch = () => {
@@ -24,7 +25,7 @@ const CandidateSearch = () => {
     setCurrentUser(data);
   };
 
-  const searchForUsers = async (query: string) => {
+  const searchForUsers = async () => {
     const data: Candidate[] = await searchGithub();
     setResults(data);
     await searchForSpecificUser(data[currentIdx].login || '');
@@ -45,11 +46,21 @@ const CandidateSearch = () => {
       await searchForSpecificUser(results[currentIdx + 1].login || '');
     } else {
       setCurrentIdx(0);
-      await searchForUsers('defaultQuery');
+      await searchForUsers();
     }
   };
 
-  return <h1>CandidateSearch</h1>;
+  useEffect(() => {
+    searchForUsers();
+    searchForSpecificUser(currentUser.login || '');
+  }, []);
+
+  return (
+    <div>
+      <h1>CandidateSearch</h1>
+      <CandidateCard currentUser={currentUser} decision={decision} />
+    </div>
+  );
 };
 
 export default CandidateSearch;
