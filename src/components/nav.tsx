@@ -8,7 +8,10 @@ const Nav = () => {
     <ul className='nav-tabs'>
       <li className='nav-item'>
         <Link to='/' className={currentPage === '/' ? 'nav-link active' : 'nav-link'}>Home</Link>
-        
+      </li>
+
+      <li className='nav-item'>
+        <Link to='/about' className={currentPage === '/SavedCandidates' ? 'nav-link active' : 'nav-link'}>Saved Candidates</Link>
       </li>
     </ul>
   )
