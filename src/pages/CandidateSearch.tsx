@@ -30,6 +30,25 @@ const CandidateSearch = () => {
     await searchForSpecificUser(data[currentIdx].login || '');
   };
 
+  const decision = async (isSelected: boolean) => {
+    if (isSelected) {
+      let parsedCandidates: Candidate[] = [];
+      const savedCandidates = localStorage.getItem('savedCandidates');
+      if (typeof savedCandidates === 'string') {
+        parsedCandidates = JSON.parse(savedCandidates);
+      }
+      parsedCandidates.push(currentUser);
+      localStorage.setItem('savedCandidates', JSON.stringify(parsedCandidates));
+    }
+    if (currentIdx + 1 < results.length) {
+      setCurrentIdx(currentIdx + 1);
+      await searchForSpecificUser(results[currentIdx + 1].login || '');
+    } else {
+      setCurrentIdx(0);
+      await searchForUsers('defaultQuery');
+    }
+  };
+
   return <h1>CandidateSearch</h1>;
 };
 
