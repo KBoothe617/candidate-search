@@ -1,4 +1,5 @@
-// import react router dom
+// import react and react router dom
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Nav = () => {

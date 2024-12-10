@@ -1,4 +1,5 @@
 // import react icons and candidate interface
+import React from 'react';
 import { Candidate } from "../interfaces/Candidate.interface";
 import { IoAddCircle, IoRemoveCircle } from "react-icons/io5";
 
