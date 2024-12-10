@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "vite",
     "clean": "rm -rf dist",
-    "build": "tsc && vite build",
+    "build": "npm run clean && tsc && vite build",
+    "start": "vite",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "start": "ts-node src/main.tsx"
+    "preview": "vite preview"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
