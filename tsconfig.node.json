@@ -2,11 +2,10 @@
   "compilerOptions": {
     "composite": true,
     "skipLibCheck": true,
-    "module": "esnext",
+    "module": "ESNext",
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "jsx": "react" // Add this line to support JSX
+    "strict": true
   },
-  "include": ["vite.config.ts", "src/**/*.ts", "src/**/*.tsx"] // Include your source files
+  "include": ["vite.config.ts"]
 }
